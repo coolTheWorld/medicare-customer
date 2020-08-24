@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SpriteFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CssFileName="../images" ImageName="img" IsPhone="false" SpriteImgFileType="Png" xmlns="CssSprite">
+  <SpriteList>
+    <Sprite Path="jinru.png" LocationX="34" LocationY="0" />
+    <Sprite Path="reload.png" LocationX="65" LocationY="0" />
+    <Sprite Path="icon_paging_right.png" LocationX="50" LocationY="0" />
+    <Sprite Path="fanhui.png" LocationX="17" LocationY="0" />
+    <Sprite Path="icon_paging_left.png" LocationX="0" LocationY="0" />
+  </SpriteList>
+</SpriteFile>

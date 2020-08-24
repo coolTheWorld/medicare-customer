@@ -1,0 +1,1696 @@
+body {
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* 	width: 1280px; */
+    min-height: 780px;
+    min-width: 1000px;
+    font-size: 12px;
+    padding-left: 0;
+    overflow: auto;
+    background: #fff; /*整个背景的色调*/
+}
+
+#mapBox {
+    position: absolute;
+    top: 130px;
+    bottom: 20px;
+    left: 90px;
+    right: 0;
+    display: none;
+}
+
+#mapApply,
+#mapManage {
+    height: 0;
+    width: 0;
+    border: 0;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.ie {
+    _position: absolute;
+    _clear: both;
+}
+
+/* controller初始化前均不可见 */
+.ms-controller, .ms-important, [ms-controller], [ms-important] {
+    visibility: hidden;
+}
+
+/*树与分组展示区*/
+.menu-item-extra {
+    position: relative;
+    width: 100%;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+/* 右侧内容框 */
+.container-main {
+    margin: 10px 0 0 250px;
+}
+
+/* ---------------------------Bootstrap全局样式调整----------------------- */
+/*字体统一修改为12px*/
+.btn {
+    font-size: 12px;
+}
+
+.btn-large {
+    font-size: 18px;
+}
+
+/*新button样式*/
+._btn {
+    min-width: 80px;
+    height: 28px;
+    padding: 0 5px;
+    font-size: 12px;
+    line-height: 28px;
+    background: #c9c9c9;
+    display: inline-block;
+    margin-left: 10px;
+    color: #fff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    border: 0;
+}
+._btn_hover:hover {
+    background-color: #aaa;
+}
+.operation-btn {
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 0 14px;
+    padding: 0 7px \0;
+    border: 1px solid #C5C5C5;
+    background: #fff;
+    height: 29px;
+    min-width: 58px;
+    display: inline-block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 27px;
+    line-height: 29px \0;
+    text-align: center;
+    outline-width: 0;
+}
+.operation-btn:hover,
+.operation-btn.active {
+    background-color: #ddd;
+}
+.operation-btn i {
+    padding-right: 3px;
+    font-size: 14px;
+    color: #999;
+}
+/*.operation-btn .fa-remove:before{*/
+    /*font-size: 15px;*/
+    /*position: relative;*/
+    /*top: 1px;*/
+/*}*/
+/*.fa-plus:before,*/
+/*.fa-download:before {*/
+    /*position: relative;*/
+    /*top: 1px;*/
+/*}*/
+
+label, input, button, select, textarea {
+    font-size: 12px;
+}
+
+/* form边距调整 */
+form {
+    margin: 5px 5px 0 0;
+}
+
+.form-horizontal .control-group {
+    margin-bottom: 5px;
+}
+
+/* fixed的表格才可以使单元格显示省略号*/
+.table {
+    table-layout: fixed;
+}
+
+/*table边距调整*/
+.table th, .table td {
+    padding: 5px 8px;
+}
+
+/* 表格中checkbox居中对齐 */
+.table th input, .table td input {
+    vertical-align: sub;
+}
+
+/*well边距调整*/
+.well {
+    margin: 0;
+    background-color: #ffffff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/*标签高度与边距调整*/
+.badge {
+    height: 12px;
+    padding: 2px 5px;
+}
+
+/*带框table内部不显示内框*/
+.table-bordered {
+    border-left: 1px solid #ddd;
+}
+
+.table-bordered th, .table-bordered td {
+    border-left: 0;
+}
+
+/*单选框和input框共存样式调整*/
+
+.controls input[type=radio] {
+    margin: 6px auto;
+    margin-right: 5px;
+}
+.controls .radio {
+    line-height: 24px;
+}
+
+/* ---------------------------自定义组件样式----------------------- */
+/*常用block*/
+.block {
+    border: 1px solid #ccc;
+	background: white;
+	margin: 10px 0 0 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.block-border-top {
+    border: null;
+    border-top: 1px solid #ccc;
+	background: white;
+	margin: 10px 0 0 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+/*页面元素*/
+.page {
+    background: #fff;
+    height: 100%;
+    min-height: 670px;
+    overflow: hidden;
+    margin: 10px 10px 0;
+    position: relative;
+    top: 0;
+}
+
+.table+.bottom {
+    height: 45px;
+    margin-top: 5px;
+}
+
+.bottom .dataTables_info {
+    float: left;
+    padding: 4px 12px;
+}
+
+.bottom .dataTables_paginate {
+    float: right;
+}
+
+/*在主页面中的table，区别于弹框中的table*/
+.page-table th, .page-table td {
+    padding: 14px 0 14px 20px;
+    text-align: left;
+}
+
+.page-table+.bottom {
+    padding: 10px;
+}
+
+.modal-table th, .modal-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.modal-table+.bottom {
+    padding: 5px 9px 0 1px;
+}
+
+.modal {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.table-bordered-top-bottom {
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+
+.bottom .btn {
+    padding: 4px 6px;
+}
+
+/*外部已经有边界的table*/
+.wrapped-table {
+    border-bottom: 1px solid #ddd;
+}
+
+.block-content {
+    padding: 5px;
+    min-height: .25em;
+    border-top: 1px solid #ccc;
+}
+
+.block-header {
+    margin-bottom: 0;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.block-header > div {
+    padding-top: 10px;
+}
+
+.block-header .block-title {
+    padding-top: 10px;
+    float: left;
+}
+
+.block-header .header-buttons {
+    padding-top: 0;
+    float: right;
+}
+
+.block-header .header-select-container {
+    padding: 5px 0;
+}
+
+.block-header .header-select {
+    margin: 0;
+}
+
+/*不可见但保留位置*/
+.invisible {
+    visibility: hidden;
+}
+
+/* 禁止输入法的文本框 */
+.alphanumeric {
+    ime-mode: disabled;
+}
+
+/* 文本框内容显示为大写（取值仍为原值，传递时需手动转换）*/
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* spin遮罩层 */
+.overlay {
+    background: #fff;
+    filter: alpha(opacity=60);
+    opacity: .6;
+}
+
+/*图片垂直居中辅助span*/
+.img-container {
+    white-space: nowrap;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.img-container .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* block中的表格取消下边距 */
+.block-content table {
+    margin-bottom: 0;
+}
+
+/* top-block样式 */
+.top-block {
+    margin: 10px 0 0 0;
+    padding: 0 10px 10px 10px;
+    background-color: #fafafa;
+    background-image: -moz-linear-gradient(top, #fff, #f2f2f2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2));
+    background-image: -webkit-linear-gradient(top, #fff, #f2f2f2);
+    background-image: -o-linear-gradient(top, #fff, #f2f2f2);
+    background-image: linear-gradient(to bottom, #fff, #f2f2f2);
+    background-repeat: repeat-x;
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+    *zoom: 1;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+.top-block .big-num {
+    font-size: 38px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.top-block .rate {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+}
+
+/* 带框block样式 */
+.block-bordered {
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* 表单tooltip错误提示 */
+.control-group.error .tooltip {
+    z-index: 10;
+}
+
+.control-group.error .in.tooltip {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.control-group.error .tooltip.top .tooltip-arrow {
+    border-top-color: #a9302a;
+}
+
+.control-group.error .tooltip.right .tooltip-arrow {
+    border-right-color: #a9302a;
+}
+
+.control-group.error .tooltip.left .tooltip-arrow {
+    border-left-color: #a9302a;
+}
+
+.control-group.error .tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #a9302a;
+}
+
+.control-group.error .tooltip-inner {
+    color: #fff;
+    background-color: #a9302a;
+}
+
+/*设置表格上层容器为相对位置,避免显示问题*/
+.div-table-container {
+    position: relative;
+}
+
+/*无表头的表格仍需要thead以设置单元格宽度,隐藏thead的高度避免显示问题*/
+.table .nohead th {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*设置表格下边距*/
+.table {
+    margin-bottom: 0;
+}
+
+/*设置分页信息上边距*/
+.dt-bottom {
+    margin-top: 5px;
+}
+
+/* 表格text排列样式 */
+.table th.text-center, .table td.text-center {
+    text-align: center;
+}
+
+.table th.text-right, .table td.text-right {
+    text-align: right;
+}
+
+/* 单元格连续纯字母数字强制换行显示 */
+.wordwrap {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+/* 超长文字单元格省略号显示 */
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+/* 表格单元格垂直居中 */
+.table.table-vertical-middle td {
+    vertical-align: middle;
+}
+
+/* 表格复选框单元格居中显示 */
+/*.table .td-checkbox {*/
+    /*text-align: center;*/
+/*}*/
+
+.table tbody .td-checkbox {
+    vertical-align:middle;
+}
+
+.table .td-checkbox input {
+    margin: 0;
+}
+
+/* 表格操作栏按钮居中 */
+.table .td-operation {
+    text-align: center;
+}
+
+/* 表格操作栏按钮间隔 */
+.table .td-operation .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+/* 无边框表格样式 */
+.table-noborder th, .table-noborder td {
+    border: 0;
+}
+
+/* 表单信息栏系列样式定义 */
+/* well边距调整 */
+.info-content.well {
+    padding: 5px;
+}
+
+.info-content .prop-name {
+    float: left;
+    padding: 5px 0 0 0;
+    width: 90px;
+    text-align: right;
+    font-weight: 700;
+}
+
+.info-content .prop-value {
+    padding-top: 5px;
+    margin-left: 100px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.info-content .dl-horizontal dt {
+    padding-top: 5px;
+    width: 90px;
+    white-space: normal;
+}
+
+.info-content .dl-horizontal dd {
+    padding-top: 5px;
+    margin-left: 100px;
+    /*word-break: break-all;*/
+    /*word-wrap: break-word;*/
+    height: 20px;
+}
+
+.info-content .control-group {
+    margin: 0 10px 0 0;
+    *height: 40px;
+    /* 	display:inline-block;
+        *display:inline;
+        *zoom:1; */
+    float: left;
+}
+
+.info-content .control-group.pull-right {
+    float: right;
+}
+
+.info-content .control-group .control-label {
+    float: left;
+    padding: 5px 0 0 0;
+    width: 90px;
+    text-align: right;
+    font-weight: 700;
+}
+span.control-label.has-select {
+    vertical-align: super;
+    position: relative;
+    top: 3px\9;
+}
+
+.info-content .control-group .controls {
+    margin-left: 100px;
+}
+
+.info-content .control-group .controls > input, .info-content .control-group .controls > textarea {
+    width: 186px;
+}
+
+.info-content .control-group .controls > select {
+    width: 200px;
+}
+
+.info-content .control-group .controls > input.xlarge, .info-content .control-group .controls > textarea.xlarge {
+    width: 496px;
+    /* 	*width:496px; */
+}
+
+.info-content .control-group .controls > input.xxlarge, .info-content .control-group .controls > textarea.xxlarge {
+    width: 806px;
+    /* 	*width:806px; */
+}
+
+/*表单内下拉框元素对齐*/
+.info-content .control-group .controls .jq-dropdown-panel {
+    width: 178px;
+}
+
+.info-content .control-group .controls .jq-dropdown-panel .ztree {
+    overflow: auto;
+    max-height: 250px;
+}
+
+/*表单内Select2控件对齐*/
+.info-content .control-group .controls .select2-container {
+    width: 201px;
+}
+
+/*表单内日期选择控件对齐*/
+.info-content .control-group .controls .datepicker input {
+    width: 160px;
+}
+
+/*表单内inline元素对齐*/
+.info-content .control-group .controls .inline-wrap {
+    width: 200px;
+}
+
+.info-content .control-group .controls .inline-wrap.xlarge {
+    width: 510px;
+}
+
+.info-content .control-group .controls .inline-wrap.xxlarge {
+    width: 820px;
+}
+
+/*表单内按钮对齐*/
+.info-content .control-group .controls .button-wrap {
+    text-align: right;
+}
+
+.info-content .control-group .controls .button-wrap .btn {
+    margin-bottom: 10px;
+}
+
+.info-content .control-group .controls .button-wrap .btn + .btn {
+    margin-left: 10px;
+}
+
+/*表单内Label对齐*/
+.info-content .control-group .controls .inline-wrap label {
+    padding: 5px 0;
+    margin-bottom: 10px;
+    min-height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.info-content .control-group .controls .inline-wrap label + label {
+    padding-left: 10px;
+}
+
+/*表单内其他并排元素对齐*/
+.info-content .control-group .controls > span {
+
+    margin-bottom: 10px;
+    min-height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.info-content .control-group .controls .input-append.datepicker {
+    margin-bottom: 10px;
+}
+.info-content .control-group .controls > button {
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.info-content .control-group .controls .inline-wrap > button {
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*block悬停样式*/
+.block-hover:hover, .block-hover:hover .block-header {
+    border-color: #c4e3f3;
+}
+
+/*block选中样式*/
+.block-active, .block-active .block-header {
+    border-color: #c4e3f3;
+}
+
+/*悬停文本样式*/
+.text-hover:hover {
+    color: #c4e3f3;
+}
+
+/*日期选择控件样式*/
+.datepicker {
+    cursor: pointer;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.datepicker input[readonly] {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.datepicker input[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+
+/* 限制了弹出框内容的宽高，避免超出屏幕范围 */
+.confirm-content {
+    max-width: 600px;
+    max-height: 600px;
+    overflow: auto;
+}
+
+/* 快速选取栏 */
+.quick-selection {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.quick-selection > label {
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.quick-selection ul {
+    margin-bottom: 0;
+}
+
+/* 类似按钮效果的只读文本框*/
+input[readonly].button-like {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+input[disabled].button-like {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+
+/* 禁用输入法的文本框*/
+input.ime-off {
+    ime-mode: disabled;
+}
+
+/* 原生风格的fieldset*/
+fieldset.original-fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+fieldset.original-fieldset legend {
+    padding: 0 5px;
+    width: auto;
+    margin-bottom: 0;
+    border-bottom: 0;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+/* 表单tooltip错误提示 */
+.controls .error {
+    border: 1px solid red;
+}
+
+.controls .success {
+    border: 1px solid green;
+}
+
+.controls.error-tip .tooltip {
+    z-index: 10;
+}
+
+.controls .error-tip .in.tooltip {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.controls .error-tip.tooltip.top .tooltip-arrow {
+    border-top-color: #a9302a;
+}
+
+.controls .error-tip.tooltip.right .tooltip-arrow {
+    border-right-color: #a9302a;
+}
+
+.controls .error-tip.tooltip.left .tooltip-arrow {
+    border-left-color: #a9302a;
+}
+
+.controls .error-tip.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #a9302a;
+}
+
+.controls .error-tip .tooltip-inner {
+    color: #fff;
+    background-color: #a9302a;
+}
+
+/* 向导箭头样式 */
+.step {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    background: #e8e8e8;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+}
+
+.step:after {
+    content: '';
+    border-left: 20px solid #e8e8e8;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    right: -20px;
+    z-index: 1;
+}
+
+/* .step:last-child:after {
+	display:none;
+} */
+
+/* 无label的表单元素靠左对齐 */
+.form-horizontal .controls.no-label {
+    margin-left: 0;
+}
+
+/* 超短input */
+.input-micro {
+    width: 30px;
+}
+
+/*树查询栏*/
+.input-tree-search {
+    width: 128px;
+}
+
+/* 可点击元素 */
+.pointer {
+    cursor: pointer;
+}
+
+/*下拉框控件样式*/
+.jq-dropdown.jq-dropdown-modal {
+    z-index: 2000; /*避免在弹出框中看不到的问题*/
+}
+
+.jq-dropdown.jq-dropdown-modal .jq-dropdown-panel {
+    width: 198px;
+}
+
+.jq-dropdown.jq-dropdown-modal .jq-dropdown-panel .ztree {
+    overflow: auto;
+    max-height: 250px;
+}
+
+/* 常用基本样式 */
+.mg0 {
+    margin: 0;
+}
+
+.mg5 {
+    margin: 5px;
+}
+
+.mg10 {
+    margin: 10px;
+}
+
+.pd10 {
+    padding: 10px;
+}
+
+.mglr5 {
+    margin: 0 5px;
+}
+
+.mgtb5 {
+    margin: 5px 0;
+}
+
+.mglr10 {
+    margin: 0 10px;
+}
+
+.mgtb10 {
+    margin: 10px 0;
+}
+
+.mgl0 {
+    margin-left: 0;
+}
+
+.mgl5 {
+    margin-left: 5px;
+}
+
+.mgl10 {
+    margin-left: 10px;
+}
+
+.mgt0 {
+    margin-top: 0;
+}
+
+.mgt5 {
+    margin-top: 5px;
+}
+
+.mgt10 {
+    margin-top: 10px;
+}
+
+.mgt20 {
+    margin-top: 20px;
+}
+
+.mgt50 {
+    margin-top: 50px;
+}
+
+.mgt90 {
+    margin-top: 90px;
+}
+
+.mgt130 {
+    margin-top: 130px;
+}
+
+.mgr0 {
+    margin-right: 0;
+}
+
+.mgr5 {
+    margin-right: 5px;
+}
+
+.mgr10 {
+    margin-right: 10px;
+}
+
+.mgb0 {
+    margin-bottom: 0;
+}
+
+.mgb5 {
+    margin-bottom: 5px;
+}
+
+.mgb10 {
+    margin-bottom: 10px;
+}
+
+.pt50 {
+    padding-top: 50px;
+}
+
+.pt90 {
+    padding-top: 90px;
+}
+
+.w10 {
+    width: 10px;
+}
+
+.w20 {
+    width: 20px;
+}
+
+.w30 {
+    width: 30px;
+}
+
+.w40 {
+    width: 40px;
+}
+
+.w50 {
+    width: 50px;
+}
+
+.w60 {
+    width: 60px;
+}
+
+.w70 {
+    width: 70px;
+}
+
+.w80 {
+    width: 80px;
+}
+
+.w90 {
+    width: 90px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+/*修正IE8字体图标不刷新的问题*/
+.ie-loading-fix :before,
+.ie-loading-fix :after {
+    content: none !important;
+}
+
+/*----------------------------导航栏样式-------------------------------*/
+.left-nav {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 150px;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    background: #fff;
+    white-space: nowrap;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -o-transition: width 0.5s;
+}
+
+.right-main-box {
+    position: absolute;
+    margin: 0;
+    left: 155px;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -o-transition: left 0.5s;
+}
+
+.show-style {
+	left: 0;
+	width: 100%;
+}
+
+.left-nav-main {
+    overflow: hidden;
+}
+
+.left-nav-main-item {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    /* padding: 10px 6px 10px 44px; */
+    min-height: 0;
+    zoom: 1;
+    background-color: #EEEEEE;
+    font-size: 14px;
+    color: #999999;
+    border-radius: 0 3px 3px 0;
+    overflow: hidden;
+}
+
+.left-nav-main-item.active {
+    background-color: #179ADF;
+    background-image: -moz-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1495DF), to(#4FCBFD));
+    background-image: -webkit-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: -o-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: linear-gradient(to right, #1495DF, #4FCBFD);
+    color: #fff;
+}
+
+.left-nav-main-item.active .menu-item-a {
+    background-color: #179ADF;
+    background-image: -moz-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1495DF), to(#4FCBFD));
+    background-image: -webkit-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: -o-linear-gradient(right, #1495DF, #4FCBFD);
+    background-image: linear-gradient(to right, #1495DF, #4FCBFD);
+    color: #fff;
+}
+
+.left-nav-main-item>i {
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    margin-top: -7px;
+}
+.left-nav-main-item:hover {
+    background-color: #eee;
+}
+.left-nav-main-item:hover .menu-item-a {
+    color: #0391DB;
+}
+.left-nav-main-item.active:hover {
+    background-color: #179ADF;
+    color: #fff;
+}
+.left-nav-main-item.active:hover .menu-item-a {
+    color: #fff;
+}
+.left-nav-main-item-map {
+    width: 85px;
+    height: 75px;
+    text-align: center;
+
+    background: url("../img/s-icons.png") no-repeat;
+}
+
+.left-nav-main-item-map a {
+    display: block;
+    height: 75px;
+    line-height: 120px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+#sub-videoMonitor {
+     background-position: 30px 16px;
+}
+
+#sub-videoMonitor.active {
+    background-position: -30px 16px;
+}
+
+#sub-onlineInspect {
+    background-position: 30px -40px;
+}
+
+#sub-onlineInspect.active {
+    background-position: -30px -40px;
+}
+#sub-shopAnalysis {
+    background-position: 30px -104px;
+}
+
+#sub-shopAnalysis.active {
+    background-position: -30px -104px;
+}
+#sub-basicSetting {
+    background-position: 30px -340px;
+}
+
+#sub-basicSetting.active {
+    background-position: -30px -340px;
+}
+
+#sub-reportCenter {
+    background-position: 30px -284px;
+}
+
+#sub-reportCenter.active {
+    background-position: -30px -284px;
+}
+
+#sub-cardSolution {
+    background-position: 30px -572px;
+}
+
+#sub-cardSolution.active {
+    background-position: -30px -572px;
+}
+
+#sub-nomanDuty {
+    background-position: 30px -218px;
+}
+
+#sub-nomanDuty.active {
+    background-position: -30px -218px;
+}
+
+#sub-logManage {
+    background-position: 30px -642px;
+}
+
+#sub-logManage.active {
+    background-position: -30px -642px;
+}
+
+#sub-sysConfig {
+    background-position: 30px -702px;
+}
+
+#sub-sysConfig.active {
+    background-position: -30px -702px;
+}
+
+#sub-mapApply {
+    background-position: 35px -460px;
+}
+
+#sub-mapApply.active {
+    background-position: -25px -460px;
+}
+
+#sub-mapManage {
+    background-position: 30px -525px;
+}
+
+#sub-mapManage.active {
+    background-position: -30px -525px;
+}
+
+#sub-damageSupervise {
+    background-position: 30px -160px;
+}
+
+#sub-damageSupervise.active {
+    background-position: -30px -160px;
+}
+
+.sub-menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    color: #ffffff;
+    z-index: 4;
+}
+
+.sub-menu-bg {
+    top: 0;
+    position: absolute;
+    bottom:0;
+}
+
+#third-videoMonitor .sub-menu-bg{
+    background-position: 15px -36px;
+}
+#third-onlineInspect .sub-menu-bg{
+    background-position: 15px -200px
+}
+#third-shopAnalysis .sub-menu-bg{
+    background-position: 15px -365px
+}
+#third-basicSetting .sub-menu-bg{
+    background-position: 15px -1026px
+}
+.left-nav-main-item a{
+    padding: 15px 6px 15px 50px;
+    text-align: left;
+    color: #999;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+    display: block;
+}
+.sub-menu-item a {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    color: #aaa;
+    padding-left: 24%;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+    display: block;
+}
+
+.sub-menu-item>a>i {
+    position: absolute;
+    top: 15px;
+    left: 45px;
+}
+
+.third-menu {
+    width: 100%;
+}
+/*单页不显示菜单栏的样式*/
+#viewBox.single-page .left-nav {
+    display: none;
+}
+#viewBox.single-page .right-main-box {
+    left: 10px;
+}
+/*鼠标离开菜单栏时的样式*/
+.hide-menu .left-nav {
+    width: 50px;
+    z-index: 2;
+    overflow: hidden;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -o-transition: width 0.5s;
+}
+.hide-menu .right-main-box {
+    left: 60px;
+    transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -o-transition: left 0.5s;
+}
+.hide-menu .left-nav-main-item {
+    padding: 5px 0;
+}
+.hide-menu .shortHand {
+    margin: auto;
+    width: 30px;
+    height: 28px;
+    color: #666;
+    border: 1px dashed #666;
+    z-index: 10;
+    border-radius: 17px;
+    text-align: center;
+    font-size: 16px;
+}
+.hide-menu .active .shortHand {
+    color: #fff;
+    border-color: #fff;
+}
+.hide-menu .shortWord {
+    margin-top: 4px;
+    display: inline-block;
+}
+
+/*顶部tab栏目样式*/
+.top-tab {
+    color: #fff;
+    position: absolute;
+    top: 90px;
+    width: 100%;
+}
+
+.top-tab-left {
+    width: 90px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    background: url("../img/s-icons.png") no-repeat #292b37;
+    background-position: 39px -405px;
+}
+
+.top-tab-right {
+    height: 40px;
+    position: absolute;
+    right: 0;
+    left: 90px;
+}
+
+.top-tab-right-shadow {
+    height: 5px;
+    background: url("../img/tab-nav-shadow.jpg") repeat-x;
+}
+
+.top-tab-right-list {
+    margin-top: 5px;
+    padding: 0 5px 5px 0;
+    overflow: hidden;
+    height: 30px;
+    position: absolute;
+}
+
+.top-tab-right-list > div.top-tab-right-shadow {
+    height: 5px;
+    background: url("../img/tab-nav-shadow.jpg") repeat-x;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.top-tab-right-dropDown {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    width: 50px;
+    color: #000;
+}
+
+.overflow-list-container {
+    position: absolute;
+    top: 0;
+    width: 125px;
+    right: 0;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+
+/*.overflow-list-container:hover,*/
+/*.overflow-list-container .fa-caret-down:hover,*/
+/*#overflow-list a:hover {*/
+    /*color: #ea4d00;*/
+/*}*/
+
+/*.overflow-list-container .fa-caret-down:before {*/
+    /*position: relative;*/
+    /*top: 3px;*/
+/*}*/
+
+/*.overflow-list-container .fa-caret-down {*/
+    /*position: relative\0;*/
+    /*top: -5px\0;*/
+/*}*/
+
+.top-tab-right-list > div {
+    width: 125px;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    background: url("../img/tab.png") no-repeat;
+    background-position: -4px -16px;
+    margin-left: -4px;
+    margin-right: -6px;
+}
+
+.top-tab-right-list > div >a{
+    display: block;
+    float: left;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #9f9fa0;
+    outline: none;
+}
+
+.top-tab-right-list > div.active {
+    width: 125px;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    background: url("../img/tab.png") no-repeat;
+    background-position: -137px -16px;
+    margin-left: -4px;
+    margin-right: -6px;
+    z-index: 100;
+}
+
+.top-tab-right-list > div.active >a{
+    display: block;
+    float: left;
+    margin-left: 20px;
+    text-decoration: none;
+    outline: none;
+}
+
+/*分页条的样式调整*/
+.page_jump input {
+    width: 30px;
+}
+
+.primary {
+    background-color: #e7692b;
+}
+
+.btn-blur {
+    background-color: #0391DB;
+}
+.btn-blur:hover {
+    background-color: #04c;
+}
+.dataTables_paginate div.page_jump,
+.dataTables_paginate .pagination {
+    float: right;
+    margin: 0 0 0 5px;
+}
+
+
+/*ocx插件*/
+#ocxModel {
+    width: 100%;
+}
+
+/* datatable无数据时提示内容居中 */
+.dataTables_empty {
+    text-align: center !important;
+}
+
+/*定义所有文本溢出,宽度根据具体需要自行设置*/
+.text-overflow-all {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*logo样式*/
+
+.logo-style {
+    width: 42px;
+    margin-top: 20px;
+    float: left;
+    margin-right: 10px;
+}
+
+#delete-all-tap {
+    width: 28px;
+    padding-left: 8px;
+    text-align: left;
+    background-position-x: -95px;
+}
+
+.ocx-container-all {
+    position: relative;
+    z-index: 1;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.sub-menu-item .current-third {
+    color: #179adf;
+    background: #eee;
+}
+
+.operation-icons span + span {
+    margin-left: 10px;
+}
+
+.operation-icons span {
+    cursor: pointer;
+}
+
+.height100 {
+    height: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.pdt20 {
+    padding-top: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.pdr10 {
+    padding-right: 10px;
+}
+
+.pd5 {
+    padding: 5px;
+}
+
+.wdp100 {
+    width: 100%;
+}
+
+.input-append input {
+    font-size: 12px;
+}
+
+.title-bg {
+    padding: 5px 15px;
+    margin-bottom: 0;
+    background: #262626;
+    color: #fff;
+    cursor: move;
+}
+
+.close {
+    color: #fff;
+    opacity: 1;
+    font-family: Microsoft Yahei;
+    font-size: 14px;
+}
+
+.footer-sty {
+    background: #fff;
+    border-top: none;
+    padding-top: 0;
+}
+
+.mgl15 {
+    margin-left: 15px;
+}
+
+.mgb20 {
+    margin-bottom: 20px;
+}
+
+.table-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.border-top-none {
+    border-top: none;
+}
+
+.border-radius-none {
+    border-radius: 0;
+}
+
+.mgr20 {
+    margin-right: 20px;
+}
+
+.cancel {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.custom-color {
+    color: #F26239;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.pdl15 {
+    padding-left: 15px;
+}
+
+.border-box {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.close:hover, .close:focus {
+    color: #fff;
+    opacity: 1;
+}
+
+.page-nav{ 
+    height:28px;
+    line-height:28px;
+    color:#777777;
+    margin-top:5px;
+    color: #5B6675;
+    background-color: #CFD3D9;
+}
+.page-nav .current-page{ 
+    font-weight:bold;
+    display: inline-block;
+    width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 29px;
+    margin-bottom: 0px;
+}
+.page-nav .current-page .title {
+    color: #777777;
+}
+.page-nav a,.page-nav span{
+    text-indent:8px;
+}
+.page-nav a{
+    color:#445399;
+}
+.page-nav a:hover{
+    text-decoration:none;
+}
+.drop-down {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+}
+.drop-down .operation-btn {
+    width: 98px;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+.mgl50 {
+    margin-left: 50px;
+}
+.warning-text {
+    color: #e7692b;
+}
+
+.no-authority {
+	position: absolute;
+	top: 10%;
+	margin: 200px auto;
+	width: 300px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.no-authority-img {
+	width: 62px;
+	position: absolute;
+	top: -70px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
