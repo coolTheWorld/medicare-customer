@@ -148,7 +148,6 @@ public class RecordController {
     public Map getWareHouseItemsData(HttpServletRequest request, @RequestParam("page") String page,
                                      @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory wareHouseItemFactory = new RecordByMonthFactory<Warehouseitem>();
             // 入库记录
@@ -157,7 +156,6 @@ public class RecordController {
                     + " from TBL_WAREHOUSEITEM t where t.cus_id = ?0 and t.wi_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_WAREHOUSEITEM where cus_id = ?0 and  wi_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = wareHouseItemFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_WAREHOUSEITEM.getValue(), baseService, countSql, sql, Warehouseitem.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -175,7 +173,6 @@ public class RecordController {
     public Map getDeliveryItemsData(HttpServletRequest request, @RequestParam("page") String page,
                                     @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory deliveryItemFactory = new RecordByMonthFactory<Deliveryitem>();
             // 出库记录
@@ -184,7 +181,6 @@ public class RecordController {
                     + " from TBL_DELIVERYITEM t where t.cus_id = ?0 and t.di_opdatetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_DELIVERYITEM where cus_id = ?0 and  di_opdatetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = deliveryItemFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_DELIVERYITEM.getValue(), baseService, countSql, sql, Deliveryitem.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -202,7 +198,6 @@ public class RecordController {
     public Map getSalesItemsData(HttpServletRequest request, @RequestParam("page") String page,
                                  @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory salesItemFactory = new RecordByMonthFactory<Salesitem>();
             // 销售记录
@@ -211,7 +206,6 @@ public class RecordController {
                     + " from TBL_SALESITEM t where t.cus_id = ?0 and t.so_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_SALESITEM where cus_id = ?0 and  so_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = salesItemFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_SALESITEM.getValue(), baseService, countSql, sql, Salesitem.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -229,13 +223,11 @@ public class RecordController {
     public Map getItemsStockData(HttpServletRequest request, @RequestParam("page") String page,
                                  @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory itemRecordFactory = new RecordByWeekFactory<Itemstock>();
             String sql = "SELECT IS_ID,CUS_ID,CUS_PID,CUS_DAREWAY,ITEM_CODE,ITEM_NAME,ITEM_NUM,ITEM_UNIT,ITEM_SPECIFICATION,ITEM_BATCHNO,ITEM_PERMISSION,ITEM_MFGDATE,ITEM_EXPDATE,ITEM_MFRS,ITEM_MAKEIN,ITEM_HCSCODE,ITEM_WHCODE,ITEM_WHNAME,ITEM_LOCATION,ITEM_PICKTIME,ITEM_ADDTIME,ITEM_CHECKNUM,ROW_NUM FROM  (select  IS_ID,CUS_ID,CUS_PID,CUS_DAREWAY,ITEM_CODE,ITEM_NAME,ITEM_NUM,ITEM_UNIT,ITEM_SPECIFICATION,ITEM_BATCHNO,ITEM_PERMISSION,ITEM_MFGDATE,ITEM_EXPDATE,ITEM_MFRS,ITEM_MAKEIN,ITEM_HCSCODE,ITEM_WHCODE,ITEM_WHNAME,ITEM_LOCATION,ITEM_PICKTIME,ITEM_ADDTIME,ITEM_CHECKNUM,ROW_NUMBER() over (PARTITION BY ITEM_CODE,ITEM_BATCHNO ORDER BY ITEM_PICKTIME desc) ROW_NUM from TBL_ITEMSTOCK WHERE CUS_ID = ?0 AND ITEM_PICKTIME BETWEEN to_date(?1, 'yyyy-mm-dd hh24:mi:ss') and to_date(?2, 'yyyy-mm-dd hh24:mi:ss') ) t where  t.ROW_NUM = 1";
             String countSql = "SELECT COUNT(CUS_ID) FROM  (select  IS_ID,CUS_ID,CUS_PID,CUS_DAREWAY,ITEM_CODE,ITEM_NAME,ITEM_NUM,ITEM_UNIT,ITEM_SPECIFICATION,ITEM_BATCHNO,ITEM_PERMISSION,ITEM_MFGDATE,ITEM_EXPDATE,ITEM_MFRS,ITEM_MAKEIN,ITEM_HCSCODE,ITEM_WHCODE,ITEM_WHNAME,ITEM_LOCATION,ITEM_PICKTIME,ITEM_ADDTIME,ITEM_CHECKNUM,         ROW_NUMBER() over (PARTITION BY ITEM_CODE,ITEM_BATCHNO ORDER BY ITEM_PICKTIME desc) ROW_NUM from TBL_ITEMSTOCK WHERE CUS_ID = ?0 AND ITEM_PICKTIME BETWEEN to_date(?1, 'yyyy-mm-dd hh24:mi:ss') and to_date(?2, 'yyyy-mm-dd hh24:mi:ss')     ) t where  t.ROW_NUM = 1";
             resultMap = itemRecordFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_ITEMSTOCK.getValue(), baseService, countSql, sql, Itemstock.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -253,7 +245,6 @@ public class RecordController {
     public Map getPrescribeData(HttpServletRequest request, @RequestParam("page") String page,
                                 @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory prescribeFactory = new RecordByMonthFactory<Prescribe>();
             /// 处方记录
@@ -262,7 +253,6 @@ public class RecordController {
                     + " from TBL_PRESCRIBE t where t.cus_id = ?0 and t.rp_drtime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_PRESCRIBE where cus_id = ?0 and  rp_drtime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = prescribeFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_PRESCRIBE.getValue(), baseService, countSql, sql, Prescribe.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -280,7 +270,6 @@ public class RecordController {
     public Map getClinicrecordsData(HttpServletRequest request, @RequestParam("page") String page,
                                     @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory clinicrecordFactory = new RecordByMonthFactory<Clinicrecords>();
             // 门诊记录
@@ -289,7 +278,6 @@ public class RecordController {
                     + " from TBL_CLINICRECORDS t where t.cus_id = ?0 and t.diag_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_CLINICRECORDS where cus_id = ?0 and  diag_datetime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = clinicrecordFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_CLINICRECORDS.getValue(), baseService, countSql, sql, Clinicrecords.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -307,7 +295,6 @@ public class RecordController {
     public Map getHospitalizedData(HttpServletRequest request, @RequestParam("page") String page,
                                    @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory hospitalizedFactory = new RecordByMonthFactory<Hospitalized>();
             // 住院记录
@@ -316,7 +303,6 @@ public class RecordController {
                     + " from TBL_HOSPITALIZED t where t.cus_id = ?0 and t.hosp_intime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_HOSPITALIZED where cus_id = ?0 and  hosp_intime  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = hospitalizedFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_HOSPITALIZED.getValue(), baseService, countSql, sql, Hospitalized.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
@@ -334,7 +320,6 @@ public class RecordController {
     public Map getDischargedData(HttpServletRequest request, @RequestParam("page") String page,
                                  @RequestParam("rows") String rows, @RequestParam("date") Date date) {
         Map<String, Object> resultMap = null;
-        //resultMap = getDataMap(request,page,rows,date,TableName.TBL_ITEMSTOCK.getValue());
         try {
             IRecordFactory dischargedFactory = new RecordByMonthFactory<Discharged>();
             // 出院记录
@@ -343,7 +328,6 @@ public class RecordController {
                     + " from TBL_DISCHARGED t where t.cus_id = ?0 and t.dc_outdate  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             String countSql = "select count(cus_id) from TBL_DISCHARGED where cus_id = ?0 and  dc_outdate  between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
             resultMap = dischargedFactory.getRecordForceByPart(request, date, date, page, rows, TableName.TBL_DISCHARGED.getValue(), baseService, countSql, sql, Discharged.class).result();
-            // 返回分页结果
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();

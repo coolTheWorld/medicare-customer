@@ -6,6 +6,10 @@ import yibao.yiwei.service.IBaseService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/**
+ * @author sunshy
+ * @param <T>
+ */
 public class RecordByWeekFactory<T> implements IRecordFactory<T> {
     @Override
     public RecordProduct getRecordForceByPart(HttpServletRequest request, Date startDate, Date endDate, String page, String rows, String tableName, IBaseService baseService, String countSql, String sql, Class entityClazz) throws Exception {
