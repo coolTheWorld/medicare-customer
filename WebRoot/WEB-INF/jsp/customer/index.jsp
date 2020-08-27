@@ -252,8 +252,7 @@ function layerShow() {
             ,
             
             content: '<div style="padding: 30px; line-height: 22px; background-color: #eee; font-weight: 300;"> <h3>未查询到当前定点（' + '${sessionScope.user.userAccount}' + '）的进销存数据。<br/><br/>详情请咨询：18253329695<br/><br/><div style = "text-align:center;"><a class="layui-btn layui-btn-sm" href="${path}/customerUser/signOut">注销</a></div></div>'
-            
-            //content: '<div style="padding: 30px; line-height: 22px; background-color: #eee; font-weight: 300;"> <h3>未查询到当前定点（' + '${sessionScope.user.userAccount}' + '）的进销存数据。<br/><br/>详情请咨询：18253329695<br/></div>'
+
             ,
             success: function (layero) {
 
