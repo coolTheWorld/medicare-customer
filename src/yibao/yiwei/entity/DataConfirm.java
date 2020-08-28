@@ -10,7 +10,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * 数据确认
  * @author sunshy
@@ -23,7 +22,7 @@ public class DataConfirm {
 	private String confirmId;//主键
 	private String cusId;//customerId
 	//@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
-	private Date confirmDate;//确认数据的日期 *暂时不用
+	private Date recordDate;//确认哪天的数据
 	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	private Date createTime;//确认时间
 	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
@@ -64,12 +63,12 @@ public class DataConfirm {
 		this.cusId = cusId;
 	}
 	
-	@Column(name = "CONFIRM_DATE", length = 7)
-	public Date getConfirmDate() {
-		return confirmDate;
+	@Column(name = "RECORD_DATE", length = 7)
+	public Date getRecordDate() {
+		return recordDate;
 	}
-	public void setConfirmDate(Date confirmDate) {
-		this.confirmDate = confirmDate;
+	public void setRecordDate(Date recordDate) {
+		this.recordDate = recordDate;
 	}
 	
 	@Column(name = "CREATE_TIME", length = 7)

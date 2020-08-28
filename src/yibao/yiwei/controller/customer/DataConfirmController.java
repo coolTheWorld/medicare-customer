@@ -93,7 +93,7 @@ public class DataConfirmController {
 		}
 		
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		String dateString = sf.format(new Date());
+		String dateString = sf.format(confirm.getRecordDate());
 
 		// 日期参数拼接
 		StringBuffer startDateParam = new StringBuffer(dateString).append(" 00:00:00");
@@ -102,14 +102,14 @@ public class DataConfirmController {
 		CustomerUser user = (CustomerUser) request.getSession().getAttribute(SessionKey.USER.getValue());
 
 		// 查询数据库中是否有当天数据
-		String sql = "select CONFIRM_ID, CONFIRM_DATE, CREATE_TIME, CUS_ID, RECORD_BAK, RECORD_BAK1, RECORD_BAK2, RECORD_BAK3, RECORD_BAK4, RECORD_BAK5, RECORD_BAK6, RECORD_BAK7, RECORD_CLINICRECORDS, RECORD_DELIVERY, RECORD_DISCHARGED, RECORD_HOSPITALIZED, RECORD_ITEMSTOCK, RECORD_PRESCRIBE, RECORD_SALES, RECORD_WAREHOUSE from TBL_DATA_CONFIRM where CUS_ID = ?0 and CREATE_TIME between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
+		String sql = "select CONFIRM_ID, RECORD_DATE, CREATE_TIME, CUS_ID, RECORD_BAK, RECORD_BAK1, RECORD_BAK2, RECORD_BAK3, RECORD_BAK4, RECORD_BAK5, RECORD_BAK6, RECORD_BAK7, RECORD_CLINICRECORDS, RECORD_DELIVERY, RECORD_DISCHARGED, RECORD_HOSPITALIZED, RECORD_ITEMSTOCK, RECORD_PRESCRIBE, RECORD_SALES, RECORD_WAREHOUSE from TBL_DATA_CONFIRM where CUS_ID = ?0 and RECORD_DATE between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
 		DataConfirm confirmResult = dataConfirmService.findUniqueSql(sql, DataConfirm.class, user.getCusId(),
 				startDateParam.toString(), endDateParam.toString());
 
 		if (confirmResult != null && confirmResult.getConfirmId() != null) {
 			resultMap = new HashMap<String, Object>();
 			resultMap.put("flag", "0");
-			resultMap.put("mes", "今天的数据已确认");
+			resultMap.put("mes", "当天的数据已确认");
 		} else {
 			// 添加
 			confirm.setCusId(user.getCusId());
@@ -130,11 +130,15 @@ public class DataConfirmController {
 	 */
 	@RequestMapping("/findByCustomer")
 	@ResponseBody
-	public Map findDataConfirm(HttpServletRequest request) {
+	public Map findDataConfirm(HttpServletRequest request, Date date) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 
+		if(date == null){
+			date = new Date();
+		}
+
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		String dateString = sf.format(new Date());
+		String dateString = sf.format(date);
 
 		// 日期参数拼接
 		StringBuffer startDateParam = new StringBuffer(dateString).append(" 00:00:00");
@@ -143,7 +147,7 @@ public class DataConfirmController {
 		CustomerUser user = (CustomerUser) request.getSession().getAttribute(SessionKey.USER.getValue());
 
 		// 查询数据库中是否有当天数据
-		String sql = "select CONFIRM_ID, CONFIRM_DATE, CREATE_TIME, CUS_ID, RECORD_BAK, RECORD_BAK1, RECORD_BAK2, RECORD_BAK3, RECORD_BAK4, RECORD_BAK5, RECORD_BAK6, RECORD_BAK7, RECORD_CLINICRECORDS, RECORD_DELIVERY, RECORD_DISCHARGED, RECORD_HOSPITALIZED, RECORD_ITEMSTOCK, RECORD_PRESCRIBE, RECORD_SALES, RECORD_WAREHOUSE from TBL_DATA_CONFIRM where CUS_ID = ?0 and CREATE_TIME between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
+		String sql = "select CONFIRM_ID, RECORD_DATE, CREATE_TIME, CUS_ID, RECORD_BAK, RECORD_BAK1, RECORD_BAK2, RECORD_BAK3, RECORD_BAK4, RECORD_BAK5, RECORD_BAK6, RECORD_BAK7, RECORD_CLINICRECORDS, RECORD_DELIVERY, RECORD_DISCHARGED, RECORD_HOSPITALIZED, RECORD_ITEMSTOCK, RECORD_PRESCRIBE, RECORD_SALES, RECORD_WAREHOUSE from TBL_DATA_CONFIRM where CUS_ID = ?0 and RECORD_DATE between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
 		DataConfirm confirmResult = dataConfirmService.findUniqueSql(sql, DataConfirm.class, user.getCusId(),
 				startDateParam.toString(), endDateParam.toString());
 		// 获取DataConfirm反射对象
