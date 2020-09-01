@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import yibao.yiwei.common.ConfirmInit;
+import yibao.yiwei.common.NotEmpty;
 
 /**
  * 数据确认
@@ -27,21 +29,53 @@ public class DataConfirm {
 	private Date createTime;//确认时间
 	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	//private String createTime;
+	@ConfirmInit
+	@NotEmpty
 	private String recordWarehouse;//入库记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordDelivery;//出库记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordSales;//销售记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordClinicrecords;//门诊记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordPrescribe;//处方记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordHospitalized;//住院记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordDischarged;//出院记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordItemstock;//库存记录
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak1;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak2;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak3;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak4;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak5;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak6;//备用字段
+	@ConfirmInit
+	@NotEmpty
 	private String recordBak7;//备用字段
 	
 	@Id
