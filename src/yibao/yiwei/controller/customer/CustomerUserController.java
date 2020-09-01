@@ -100,22 +100,6 @@ public class CustomerUserController {
 
 		String result = "redirect:/customer/index";
 
-//		if (user.getCusId() == null || user.getCusId().equals("-1") || user.getCusId().equals("")) {
-//			 //定点信息未注册
-//			ra.addFlashAttribute("mes", "定点信息未注册");
-//			ra.addFlashAttribute("flag", false);
-//			ra.addFlashAttribute("userAccount", userParam.getUserAccount());
-//			result = "redirect:/customer/index";
-//		} else if (user.getUserStatus().equals("1")) {
-//			// 用户已ra启用
-//			result = "redirect:/customer/index";
-//		} 
-//		else if (user.getUserStatus().equals("0")) {
-//			// 用户初始化，跳转到修改密码界面
-//			request.setAttribute("mes", "为保证您的数据安全,请在首次登录时修改初始密码");
-//			result = "/customer/initPassword";
-//		}ra
-
 		Map<String, String> userMap = new HashMap<String, String>();
 		userMap.put("cusId", user.getCusId());
 		userMap.put("userAccount", user.getUserAccount());
@@ -155,10 +139,8 @@ public class CustomerUserController {
 			// 输出图像到页面
 			ImageIO.write(vc.getImage(), "JPEG", outStream);
 			outStream.close();
-			logger.info("========验证码[" + vc.getRand() + "]图像输入完成，关闭流=======");
 		} catch (IOException e) {
 			logger.debug("execption message" + e.getMessage());
-			// logger.debug("execption toString"+e.toString());
 			e.printStackTrace();
 		}
 	}
