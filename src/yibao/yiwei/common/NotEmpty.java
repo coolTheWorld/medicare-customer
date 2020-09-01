@@ -8,9 +8,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * judge value is null or not equals "1"
+ *
  * @author sunshy
  * @handler ConfirmAnnotationProcessor
- * judge value is null or not equals "1"
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})

@@ -5,8 +5,9 @@ import yibao.yiwei.entity.DataConfirm;
 import java.lang.reflect.Field;
 
 /**
- * @author sunshy
  * handler @confirmInit
+ *
+ * @author sunshy
  */
 public class ConfirmAnnotationProcessor {
     public static void init(DataConfirm confirm) throws IllegalAccessException {

@@ -1,8 +1,9 @@
 package yibao.yiwei.common;
 
 /**
- * @author sunshy
  * exception message
+ *
+ * @author sunshy
  */
 public enum  ExceptionMessage {
     TABLE_NAME_IS_NULL("请先调用buildTablesByMonth或者buildTablesByWeek"),
