@@ -5,7 +5,7 @@ import yibao.yiwei.entity.DataConfirm;
 import java.lang.reflect.Field;
 
 /**
- * handler @confirmInit
+ * handler @confirmInit and @NotEmpty
  *
  * @author sunshy
  */
