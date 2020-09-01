@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author sunshy
+ * @handler ConfirmAnnotationProcessor
  * judge value is null or not equals "1"
  */
 @Retention(RetentionPolicy.RUNTIME)

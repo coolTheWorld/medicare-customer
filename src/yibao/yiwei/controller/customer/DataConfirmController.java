@@ -1,17 +1,5 @@
 package yibao.yiwei.controller.customer;
 
-import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,16 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import yibao.yiwei.common.SessionKey;
 import yibao.yiwei.common.build.confirm.*;
-import yibao.yiwei.common.factory.page.ConfirmPageFactory;
 import yibao.yiwei.common.factory.page.IPageFactory;
 import yibao.yiwei.entity.DataConfirm;
-import yibao.yiwei.entity.system.Customer;
-import yibao.yiwei.entity.system.CustomerUser;
 import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * 数据确认接口

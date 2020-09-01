@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author sunshy
+ * @handler ConfirmAnnotationProcessor
  * initialize confirm value  "1" to "已确认"
  */
 @Target({ElementType.FIELD})

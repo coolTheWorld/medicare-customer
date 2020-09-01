@@ -2,7 +2,6 @@ package yibao.yiwei.common;
 
 import yibao.yiwei.entity.DataConfirm;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**

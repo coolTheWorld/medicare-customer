@@ -1,24 +1,22 @@
 package yibao.yiwei.controller.customer;
 
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import yibao.yiwei.common.FilePath;
+import yibao.yiwei.common.FileType;
+import yibao.yiwei.common.SessionKey;
+import yibao.yiwei.entity.system.CustomerUser;
+import yibao.yiwei.utils.FileTypeJudge;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.log4j.Logger;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-
-import yibao.yiwei.common.FilePath;
-import yibao.yiwei.common.FileType;
-import yibao.yiwei.common.SessionKey;
-import yibao.yiwei.entity.system.CustomerUser;
-import yibao.yiwei.utils.FileTypeJudge;
 
 /**
  * 问题反馈

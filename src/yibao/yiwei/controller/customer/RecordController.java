@@ -1,39 +1,22 @@
 package yibao.yiwei.controller.customer;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.lang.String;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import yibao.yiwei.common.SessionKey;
 import yibao.yiwei.common.TableName;
 import yibao.yiwei.common.factory.record.IRecordFactory;
 import yibao.yiwei.common.factory.record.RecordByMonthFactory;
 import yibao.yiwei.common.factory.record.RecordByWeekFactory;
-import yibao.yiwei.entity.Clinicrecords;
-import yibao.yiwei.entity.Deliveryitem;
-import yibao.yiwei.entity.Discharged;
-import yibao.yiwei.entity.Hospitalized;
-import yibao.yiwei.entity.Itemstock;
-import yibao.yiwei.entity.Prescribe;
-import yibao.yiwei.entity.Salesitem;
-import yibao.yiwei.entity.Warehouseitem;
-import yibao.yiwei.entity.system.CustomerUser;
+import yibao.yiwei.entity.*;
 import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
-import yibao.yiwei.utils.Utils;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * 定点上传数据查询（面向定点）
