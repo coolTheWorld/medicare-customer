@@ -1,6 +1,7 @@
 package yibao.yiwei.common.build.confirm;
 
 import yibao.yiwei.entity.DataConfirm;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 public class ConfirmDirector implements IConfirmDirector {
@@ -28,7 +29,7 @@ public class ConfirmDirector implements IConfirmDirector {
     }
 
     @Override
-    public ConfirmProduct findConfirmByConditon(IBaseService<DataConfirm> dataConfirmService,String sql) throws Exception {
+    public ConfirmProduct findConfirmByConditon(IBaseService<DataConfirm> dataConfirmService,String sql) throws BuildProcessException, IllegalAccessException {
         DataConfirm confirm = builder.builderDataConfirm( dataConfirmService,sql).getConfirmProduct().getDataConfirmResult();
         return builder.builderConfirmClazz(confirm).fieldsAdpter().builderCode("0").builderMes("成功").builderCount("1").builderData().getConfirmProduct();
     }

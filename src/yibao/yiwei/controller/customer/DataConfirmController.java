@@ -27,6 +27,7 @@ import yibao.yiwei.common.factory.page.IPageFactory;
 import yibao.yiwei.entity.DataConfirm;
 import yibao.yiwei.entity.system.Customer;
 import yibao.yiwei.entity.system.CustomerUser;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 /**
@@ -75,7 +76,7 @@ public class DataConfirmController {
 			IConfirmDirector confirmDirector = new ConfirmDirector(confirmBuilder);
 			confirmProduct = confirmDirector.saveConfirm(confirm,dataConfirmService,sql);
 		} catch (IllegalAccessException e) {
-			logger.error("结果构造异常:"+e.getMessage());
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 		return confirmProduct.getResult();
@@ -93,14 +94,16 @@ public class DataConfirmController {
 		if(date == null){
 			date = new Date();
 		}
-
 		ConfirmProduct confirmProduct = null;
 		try {
 			String sql = "select CONFIRM_ID, RECORD_DATE, CREATE_TIME, CUS_ID, RECORD_BAK, RECORD_BAK1, RECORD_BAK2, RECORD_BAK3, RECORD_BAK4, RECORD_BAK5, RECORD_BAK6, RECORD_BAK7, RECORD_CLINICRECORDS, RECORD_DELIVERY, RECORD_DISCHARGED, RECORD_HOSPITALIZED, RECORD_ITEMSTOCK, RECORD_PRESCRIBE, RECORD_SALES, RECORD_WAREHOUSE from TBL_DATA_CONFIRM where CUS_ID = ?0 and RECORD_DATE between to_date( ?1,'yyyy-mm-dd hh24:mi:ss') and to_date( ?2 ,'yyyy-mm-dd hh24:mi:ss')";
 			ConfirmBuilder builder = new ConfirmConcreteBuilder(request, date, date);
 			IConfirmDirector confirmDirector = new ConfirmDirector(builder);
 			confirmProduct = confirmDirector.findConfirmByConditon(dataConfirmService,sql);
-		} catch (Exception e) {
+		} catch (BuildProcessException e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
 		}

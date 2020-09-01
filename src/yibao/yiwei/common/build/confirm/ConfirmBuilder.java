@@ -3,6 +3,7 @@ package yibao.yiwei.common.build.confirm;
 import yibao.yiwei.common.SessionKey;
 import yibao.yiwei.entity.DataConfirm;
 import yibao.yiwei.entity.system.CustomerUser;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ public abstract class ConfirmBuilder {
     protected abstract ConfirmBuilder builderFlag(String flag);
     protected abstract ConfirmBuilder builderCode(String code);
     protected abstract ConfirmBuilder builderCount(String count);
-    protected abstract ConfirmBuilder builderData() throws Exception;
+    protected abstract ConfirmBuilder builderData() throws BuildProcessException;
 
     public ConfirmProduct getConfirmProduct(){
         return confirmProduct;

@@ -3,6 +3,7 @@ package yibao.yiwei.common.build.confirm;
 import yibao.yiwei.common.ConfirmAnnotationProcessor;
 import yibao.yiwei.common.ExceptionMessage;
 import yibao.yiwei.entity.DataConfirm;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,9 +83,9 @@ public class ConfirmConcreteBuilder extends ConfirmBuilder {
     }
 
     @Override
-    protected ConfirmBuilder builderData() throws Exception {
+    protected ConfirmBuilder builderData() throws BuildProcessException {
         if (null == confirmProduct.getDataConfirmResult()) {
-            throw new Exception(ExceptionMessage.DATA_CONFIRM_RESULT_IS_NULL.getValue());
+            throw new BuildProcessException(ExceptionMessage.DATA_CONFIRM_RESULT_IS_NULL.getValue());
         }
         List<DataConfirm> data = new ArrayList<DataConfirm>();
         data.add(confirmProduct.getDataConfirmResult());
