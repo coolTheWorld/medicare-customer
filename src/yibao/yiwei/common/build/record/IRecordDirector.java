@@ -1,5 +1,6 @@
 package yibao.yiwei.common.build.record;
 
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 /**
@@ -19,7 +20,7 @@ public interface IRecordDirector<T> {
      * @return
      * @throws Exception
      */
-    RecordProduct getResultByWeek(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws Exception;
+    RecordProduct getResultByWeek(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     /**
      * get result by month part of table
@@ -31,7 +32,7 @@ public interface IRecordDirector<T> {
      * @return
      * @throws Exception
      */
-    RecordProduct getResultByMonth(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws Exception;
+    RecordProduct getResultByMonth(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     /**
      * get result by ancestry table
@@ -42,7 +43,7 @@ public interface IRecordDirector<T> {
      * @return
      * @throws Exception
      */
-    RecordProduct getResult(IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws Exception;
+    RecordProduct getResult(IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     /**
      * get result by month part of table,
@@ -55,7 +56,7 @@ public interface IRecordDirector<T> {
      * @return
      * @throws Exception
      */
-    RecordProduct getResultForceByMonth(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws Exception;
+    RecordProduct getResultForceByMonth(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     /**
      * get result by week part of table,
@@ -68,7 +69,7 @@ public interface IRecordDirector<T> {
      * @return
      * @throws Exception
      */
-    RecordProduct getResultForceByWeek(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws Exception;
+    RecordProduct getResultForceByWeek(String tableName, IBaseService<T> baseService, String countSql, String sql, Class<T> entityClazz) throws BuildProcessException;
 
 
 }

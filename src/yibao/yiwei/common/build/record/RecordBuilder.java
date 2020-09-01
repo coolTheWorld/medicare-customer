@@ -1,6 +1,7 @@
 package yibao.yiwei.common.build.record;
 
 import yibao.yiwei.common.ExceptionMessage;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 import yibao.yiwei.utils.Utils;
 
@@ -34,9 +35,9 @@ public class RecordBuilder extends IRecordBuilder {
     }
 
     @Override
-    protected IRecordBuilder buildCountByTable(IBaseService baseService, String sql) throws Exception {
+    protected IRecordBuilder buildCountByTable(IBaseService baseService, String sql) throws BuildProcessException {
         if (tableName == null){
-            throw new Exception(ExceptionMessage.TABLE_NAME_IS_NULL.getValue());
+            throw new BuildProcessException(ExceptionMessage.TABLE_NAME_IS_NULL.getValue());
         }
 
         totals = baseService.findCountSqlByTable(sql, tableName, newTables, cusId, startDate,
@@ -50,12 +51,12 @@ public class RecordBuilder extends IRecordBuilder {
     }
 
     @Override
-    protected IRecordBuilder buildListByTable(IBaseService baseService, String sql, Class entityClazz) throws Exception {
+    protected IRecordBuilder buildListByTable(IBaseService baseService, String sql, Class entityClazz) throws BuildProcessException {
         if (tableName == null){
-            throw new Exception(ExceptionMessage.TABLE_NAME_IS_NULL.getValue());
+            throw new BuildProcessException(ExceptionMessage.TABLE_NAME_IS_NULL.getValue());
         }
         if(totals == null){
-            throw new Exception(ExceptionMessage.TOTALS_IS_NULL.getValue());
+            throw new BuildProcessException(ExceptionMessage.TOTALS_IS_NULL.getValue());
         }
         recordProduct.setRecordList(baseService.findEntitySqlByTable(sql, entityClazz, rows, page, tableName,
                 newTables, totals, cusId, startDate, endDate));
@@ -63,14 +64,14 @@ public class RecordBuilder extends IRecordBuilder {
     }
 
     @Override
-    protected IRecordBuilder buildCount(IBaseService baseService, String sql) throws Exception {
+    protected IRecordBuilder buildCount(IBaseService baseService, String sql) throws BuildProcessException {
         total = baseService.findCountSql(sql,cusId, startDate, endDate);
         recordProduct.setRecordCount(total);
         return this;
     }
 
     @Override
-    protected IRecordBuilder buildList(IBaseService baseService, String sql, Class entityClazz) throws Exception {
+    protected IRecordBuilder buildList(IBaseService baseService, String sql, Class entityClazz) throws BuildProcessException {
 //        if(total == 0){
 //            throw new Exception("未调用buildCount方法或total变量为0");
 //        }

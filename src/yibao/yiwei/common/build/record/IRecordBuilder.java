@@ -2,6 +2,7 @@ package yibao.yiwei.common.build.record;
 
 import yibao.yiwei.common.SessionKey;
 import yibao.yiwei.entity.system.CustomerUser;
+import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,22 +56,22 @@ public abstract class IRecordBuilder<T> {
     /**
      * get result count part table
      */
-    protected abstract IRecordBuilder<T> buildCountByTable(IBaseService<T> baseService, String sql) throws Exception;
+    protected abstract IRecordBuilder<T> buildCountByTable(IBaseService<T> baseService, String sql) throws BuildProcessException;
 
     /**
      * get result list part table
      */
-    protected abstract IRecordBuilder<T> buildListByTable(IBaseService<T> baseService, String sql, Class<T> entityClazz) throws Exception;
+    protected abstract IRecordBuilder<T> buildListByTable(IBaseService<T> baseService, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     /**
      * get result count
      */
-    protected abstract IRecordBuilder<T> buildCount(IBaseService<T> baseService, String sql) throws Exception;
+    protected abstract IRecordBuilder<T> buildCount(IBaseService<T> baseService, String sql) throws BuildProcessException;
 
     /**
      * get result list
      */
-    protected abstract IRecordBuilder<T> buildList(IBaseService<T> baseService, String sql, Class<T> entityClazz) throws Exception;
+    protected abstract IRecordBuilder<T> buildList(IBaseService<T> baseService, String sql, Class<T> entityClazz) throws BuildProcessException;
 
     public RecordProduct getRecordProduct(){
         return  recordProduct;
