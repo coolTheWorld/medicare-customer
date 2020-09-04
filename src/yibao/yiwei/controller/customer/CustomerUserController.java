@@ -9,6 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import yibao.yiwei.common.SessionKey;
+import yibao.yiwei.common.handler.HandlerMapKey;
+import yibao.yiwei.common.handler.code.CodeConcreteHandler;
+import yibao.yiwei.common.handler.code.ParamerConcreteHandler;
+import yibao.yiwei.common.handler.identity.PasswordConcreteHandler;
+import yibao.yiwei.common.handler.identity.UserConcreteHandler;
+import yibao.yiwei.common.handler.identity.UserLockConcreteHandler;
+import yibao.yiwei.common.proxy.code.CodeProxy;
+import yibao.yiwei.common.proxy.code.CodeSubject;
+import yibao.yiwei.common.proxy.code.ICodeSubject;
+import yibao.yiwei.common.proxy.identity.IdentityProxy;
+import yibao.yiwei.common.proxy.identity.IdentitySubject;
 import yibao.yiwei.entity.system.CustomerUser;
 import yibao.yiwei.service.IBaseService;
 import yibao.yiwei.utils.RandomNumber;
@@ -60,50 +71,31 @@ public class CustomerUserController {
 	public String doLogin(CustomerUser userParam, String code, Boolean remember, HttpServletRequest request,
 			HttpServletResponse response, RedirectAttributes ra) {
 
-		if (userParam == null || code == null) {
-			ra.addFlashAttribute("mes", "必填项不能为空");
+		//处理验证码
+		Map<String,Object> codeMap = new HashMap<String,Object>();
+		CodeSubject codeSubject = new CodeSubject();
+		ICodeSubject codeProxy = new CodeProxy(codeSubject);
+		boolean flag = codeProxy.validateCode(request,code,userParam,codeMap,ra);
+		if (!flag){
 			return "redirect:/customerUser/login";
 		}
-
-		String confirmCode = request.getSession().getAttribute(SessionKey.RANDOM_CODE.getValue()).toString();
-		// 验证码失败
-		if (!code.equals(confirmCode)) {
-			ra.addFlashAttribute("mes", "验证码失败");
-			ra.addFlashAttribute("userAccount", userParam.getUserAccount());
-			return "redirect:/customerUser/login";
-		}
-
-		// md5加密
-		Utils utils = new Utils();
-		String md5Password = utils.getMD5(userParam.getUserPassword());
-		userParam.setUserPassword(md5Password);
 
 		// 验证用户
 		String sql = "select USER_ID, CUS_ID, USER_ACCOUNT, USER_PASSWORD, USER_STATUS from SYS_CUSTOMER_USER t where t.USER_ACCOUNT = ?0 ";
 		CustomerUser user = customerService.findUniqueSql(sql, CustomerUser.class, userParam.getUserAccount());
-		if (user == null) {
-			// 未查询到数据
-			ra.addFlashAttribute("mes", "用户名不存在");
-			ra.addFlashAttribute("userAccount", userParam.getUserAccount());
-			return "redirect:/customerUser/login";
-		} else if (!userParam.getUserPassword().equals(user.getUserPassword())) {
-			// 密码错误
-			ra.addFlashAttribute("mes", "用户密码错误");
-			ra.addFlashAttribute("userAccount", userParam.getUserAccount());
-			return "redirect:/customerUser/login";
-		} else if (user.getUserStatus().equals("-1")) {
-			// 用户被锁定
-			ra.addFlashAttribute("mes", "用户被锁定");
-			ra.addFlashAttribute("userAccount", userParam.getUserAccount());
+		Map<String,Object> identityMap = new HashMap<String,Object>();
+		IdentitySubject identitySubject = new IdentitySubject();
+		IdentityProxy identityProxy = new IdentityProxy(identitySubject);
+		flag = identityProxy.validateIdentity(userParam,user,identityMap,ra);
+		if (!flag){
 			return "redirect:/customerUser/login";
 		}
 
-		String result = "redirect:/customer/index";
-
+		//返回用户信息
 		Map<String, String> userMap = new HashMap<String, String>();
 		userMap.put("cusId", user.getCusId());
 		userMap.put("userAccount", user.getUserAccount());
-		userMap.put("userStatus", user.getUserStatus().toString());
+		userMap.put("userStatus", user.getUserStatus());
 		String userJson = JSON.toJSONString(userMap);
 
 		// 把用户信息放到session
@@ -116,7 +108,7 @@ public class CustomerUserController {
 			cookie.setPath("/");// 如果不设置默认为当前页面生效
 			response.addCookie(cookie);
 		}
-		return result;
+		return "redirect:/customer/index";
 	}
 
 	/**
@@ -258,13 +250,6 @@ public class CustomerUserController {
 			resultMap.put("mes", "旧密码与新密码相同，请重新修改密码");
 			return resultMap;
 		}
-//		String countSql = "select count(CUS_ID) from SYS_CUSTOMER_USER t where t.USER_ACCOUNT = ?0 and t.USER_PASSWORD = ?1";
-//		int count = baseService.findCountSql(countSql, account, password);
-//		if (count > 0) {
-//			resultMap.put("flag", "3");
-//			resultMap.put("mes", "旧密码与新密码相同，请重新修改密码");
-//			return resultMap;
-//		}
 
 		// 修改密码
 		sql = "update SYS_CUSTOMER_USER set USER_PASSWORD = ?0,USER_STATUS = 1 where USER_ACCOUNT = ?1";
