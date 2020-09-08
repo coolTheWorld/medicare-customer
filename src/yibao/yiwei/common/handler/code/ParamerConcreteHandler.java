@@ -4,7 +4,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import yibao.yiwei.common.handler.HandlerMapKey;
 import yibao.yiwei.entity.system.CustomerUser;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
