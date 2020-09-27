@@ -10,6 +10,11 @@ import yibao.yiwei.service.IBaseService;
 import javax.servlet.http.HttpServletRequest;
 
 @Component
+/**
+ * 将用户信息写到request
+ * @author sunshy
+ *
+ */
 public class PageFacade {
 
     @Autowired
