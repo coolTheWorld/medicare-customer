@@ -6,6 +6,11 @@ import yibao.yiwei.common.facade.page.PageFacade;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 数据确认页面
+ * @author sunshy
+ *
+ */
 @Component("ConfirmPageFactory")
 public class ConfirmPageFactory implements IPageFactory{
     @Autowired

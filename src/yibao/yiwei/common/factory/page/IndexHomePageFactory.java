@@ -6,6 +6,11 @@ import yibao.yiwei.common.facade.page.PageFacade;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 首页
+ * @author sunshy
+ *
+ */
 @Component("IndexHomePageFactory")
 public class IndexHomePageFactory implements IPageFactory{
     @Autowired

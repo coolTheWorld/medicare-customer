@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
+ * 按月分表查询
  * @author sunshy
  * @param <T>
  */
