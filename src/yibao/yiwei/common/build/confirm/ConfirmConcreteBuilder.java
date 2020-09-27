@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 数据确认建造者实现类，覆写方法注释 查看上层抽象类
+ * @abstract ConfirmBuilder
+ * @author sunshy
+ *
+ */
 public class ConfirmConcreteBuilder extends ConfirmBuilder {
     public ConfirmConcreteBuilder(HttpServletRequest request, Date startDate, Date endDate) {
         super(request, startDate, endDate);

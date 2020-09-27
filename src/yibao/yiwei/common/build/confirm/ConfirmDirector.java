@@ -4,8 +4,16 @@ import yibao.yiwei.entity.DataConfirm;
 import yibao.yiwei.exception.BuildProcessException;
 import yibao.yiwei.service.IBaseService;
 
+/**
+ * @interface IConfirmDirector
+ * @author sunshy
+ *
+ */
 public class ConfirmDirector implements IConfirmDirector {
 
+	/**
+	 * 数据确认建造类
+	 */
     private ConfirmBuilder builder;
 
     public ConfirmDirector(ConfirmBuilder builder) {

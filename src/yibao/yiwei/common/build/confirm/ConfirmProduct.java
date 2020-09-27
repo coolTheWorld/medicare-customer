@@ -22,11 +22,11 @@ public class ConfirmProduct {
         isFieldsNotEmpty = false;
     }
 
-    private String mes;
-    private String flag;
-    private String code;
-    private String count;
-    private List data;
+    private String mes;//响应信息
+    private String flag;//是否成功
+    private String code;//响应码
+    private String count;//数据条数
+    private List data;//结果集
 
     public boolean isFieldsNotEmpty() {
         return isFieldsNotEmpty;
