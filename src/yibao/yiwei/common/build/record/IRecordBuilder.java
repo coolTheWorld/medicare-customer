@@ -29,6 +29,14 @@ public abstract class IRecordBuilder<T> {
         buildParam(request,startDate,endDate,page,rows);
     }
 
+    /**
+     * build param
+     * @param request
+     * @param startDate
+     * @param endDate
+     * @param page
+     * @param rows
+     */
     private void buildParam(HttpServletRequest request,Date startDate,Date endDate,String page, String rows){
         CustomerUser user  = (CustomerUser)request.getSession().getAttribute(SessionKey.USER.getValue());
 
