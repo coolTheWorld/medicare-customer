@@ -9,6 +9,7 @@ import yibao.yiwei.utils.Utils;
 import java.util.Map;
 
 /**
+ * 身份认证代理类
  * @description:
  * @author: sunshy
  * @create: 2020-09-04

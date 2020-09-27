@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 验证码代理类
  * @description:
  * @author: sunshy
  * @create: 2020-09-04
